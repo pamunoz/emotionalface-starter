@@ -32,18 +32,11 @@ package com.raywenderlich.emotionalface
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    // 1
-    val textView = TextView(this)
-    // 2
-    textView.text = "Hello Custom Views"
-    // 3
-    setContentView(textView)
+    setContentView(R.layout.activity_main)
   }
 }
