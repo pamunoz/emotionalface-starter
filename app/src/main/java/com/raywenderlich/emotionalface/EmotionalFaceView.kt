@@ -30,8 +30,13 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
         drawMouth(canvas)
     }
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {      super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        // 1 Calculate the smaller dimension of your view
+        size = Math.min(measuredWidth, measuredHeight)
+        // 2 Use setMeasuredDimension(int, int) to store the measured width and measured
+        // height of the view, in this case making your view width and height equivalent.
+        setMeasuredDimension(size, size)
     }
 
 
