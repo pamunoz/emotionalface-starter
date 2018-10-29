@@ -1,10 +1,7 @@
 package com.raywenderlich.emotionalface
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.RectF
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 
@@ -21,6 +18,8 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
     private var borderWidth = 4.0f
     // View size in pixels
     private var size = 320
+
+    private val mouthPath = Path()
 
     override fun onDraw(canvas: Canvas) {
         // call the super method to keep any drawing from the parent side.
