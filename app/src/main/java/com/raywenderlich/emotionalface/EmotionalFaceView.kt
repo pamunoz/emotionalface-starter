@@ -31,6 +31,16 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
     private val mouthPath = Path()
     private var size = 0
 
+    // 3: Add a new property called happinessState for the face happiness state.
+    var happinessState = HAPPY
+        set(state) {
+            field = state
+            // 4: Call the invalidate() method in the set happinessState method.
+            // The invalidate() method makes Android redraw the view by calling onDraw().
+            invalidate()
+        }
+
+
     override fun onDraw(canvas: Canvas) {
         // call the super method to keep any drawing from the parent side.
         super.onDraw(canvas)
