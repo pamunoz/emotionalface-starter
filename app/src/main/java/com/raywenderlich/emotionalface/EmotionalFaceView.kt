@@ -19,19 +19,17 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
         const val SAD = 1L
     }
 
-    // Paint object for coloring and styling
-    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    // Some colors for the face background, eyes and mouth.
-    private var faceColor = Color.YELLOW
-    private var eyesColor = Color.BLACK
-    private var mouthColor = Color.BLACK
-    private var borderColor = Color.BLACK
-    // Face border width in pixels
-    private var borderWidth = 4.0f
-    // View size in pixels
-    private var size = 320
+    // 2 Setup default values of the XML attribute properties, in case a user of the
+    // custom view does not set one of them
+    private var faceColor = DEFAULT_FACE_COLOR
+    private var eyesColor = DEFAULT_EYES_COLOR
+    private var mouthColor = DEFAULT_MOUTH_COLOR
+    private var borderColor = DEFAULT_BORDER_COLOR
+    private var borderWidth = DEFAULT_BORDER_WIDTH
 
+    private val paint = Paint()
     private val mouthPath = Path()
+    private var size = 0
 
     override fun onDraw(canvas: Canvas) {
         // call the super method to keep any drawing from the parent side.
