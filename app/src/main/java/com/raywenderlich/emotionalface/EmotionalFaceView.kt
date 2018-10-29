@@ -24,7 +24,21 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
     override fun onDraw(canvas: Canvas) {
         // call the super method to keep any drawing from the parent side.
         super.onDraw(canvas)
+
+        drawFaceBackground(canvas)
+        drawEyes(canvas)
+        drawMouth(canvas)
     }
+
+    private fun drawFaceBackground(canvas: Canvas) {
+    }
+
+    private fun drawEyes(canvas: Canvas) {
+    }
+
+    private fun drawMouth(canvas: Canvas) {
+    }
+
 
 
 }
