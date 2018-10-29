@@ -7,6 +7,18 @@ import android.view.View
 
 class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
+    // 1 Add two constants, one for the HAPPY state and one for the SAD state.
+    companion object {
+        private const val DEFAULT_FACE_COLOR = Color.YELLOW
+        private const val DEFAULT_EYES_COLOR = Color.BLACK
+        private const val DEFAULT_MOUTH_COLOR = Color.BLACK
+        private const val DEFAULT_BORDER_COLOR = Color.BLACK
+        private const val DEFAULT_BORDER_WIDTH = 4.0f
+
+        const val HAPPY = 0L
+        const val SAD = 1L
+    }
+
     // Paint object for coloring and styling
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     // Some colors for the face background, eyes and mouth.
