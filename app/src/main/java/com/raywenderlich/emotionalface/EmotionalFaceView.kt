@@ -30,6 +30,11 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
         drawMouth(canvas)
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {      super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+
+    }
+
+
     private fun drawFaceBackground(canvas: Canvas) {
         // 1 Set the paint color to the faceColor and make it fill the drawing area.
         paint.color = faceColor
