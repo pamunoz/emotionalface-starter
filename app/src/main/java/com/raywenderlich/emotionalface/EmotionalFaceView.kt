@@ -112,6 +112,10 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
     }
 
     private fun drawMouth(canvas: Canvas) {
+        // This will reset the path and remove any old path before drawing a new path,
+        // to avoid drawing the mouth more than one time while Android calls
+        // the onDraw() method again and again.
+        mouthPath.reset()
         // 1 Set the starting point of the path to (x0,y0) by using the moveTo() method where:
         //
         //    x0 is equal to 22% of the size.
@@ -158,7 +162,4 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
         // TypedArray objects are shared and must be recycled.
         typedArray.recycle()
     }
-
-
-
 }
