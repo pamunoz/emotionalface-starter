@@ -160,22 +160,23 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
     }
 
     override fun onSaveInstanceState(): Parcelable {
-        // 1
+        // 1: Create anew Bundle object to put your data into.
         val bundle = Bundle()
-        // 2
+        // 2: Put the happiness state value into the bundle.
         bundle.putLong("happinessState", happinessState)
-        // 3
+        // 3: Put the state coming from the superclass, in order to not lose any data saved
+        // by the superclass, then return the bundle.
         bundle.putParcelable("superState", super.onSaveInstanceState())
         return bundle
     }
 
-    override fun onRestoreInstanceState(state: Parcelable) {
-        // 4
+    override fun onRestoreInstanceState(state: Parcelable?) {
+        // 4: Check the type of the Parcelable to cast it to a Bundle object.
         var viewState = state
         if (viewState is Bundle) {
-            // 5
+            // 5: Get the happinessState value.
             happinessState = viewState.getLong("happinessState", HAPPY)
-            // 6
+            // 6: Get the superstate then pass it to the super method.
             viewState = viewState.getParcelable("superState")
         }
         super.onRestoreInstanceState(viewState)
