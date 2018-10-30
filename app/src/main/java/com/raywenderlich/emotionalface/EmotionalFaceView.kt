@@ -40,6 +40,12 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
             invalidate()
         }
 
+    // 5
+    init {
+        paint.isAntiAlias = true
+        setupAttributes(attrs)
+    }
+
 
     override fun onDraw(canvas: Canvas) {
         // call the super method to keep any drawing from the parent side.
@@ -130,6 +136,27 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
         paint.style = Paint.Style.FILL
         // 5 Draw the path to the canvas.
         canvas.drawPath(mouthPath, paint)
+    }
+
+    private fun setupAttributes(attrs: AttributeSet?) {
+        // 6: Obtain a typed array of the XML attributes
+        // Obtain a typed array of attributes
+        val typedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.EmotionalFaceView,
+                0, 0)
+        // 7: Extract custom attributes into member variables
+        // Extract custom attributes into member variables
+        happinessState = typedArray.getInt(R.styleable.EmotionalFaceView_state, HAPPY.toInt()).toLong()
+        faceColor = typedArray.getColor(R.styleable.EmotionalFaceView_faceColor, DEFAULT_FACE_COLOR)
+        eyesColor = typedArray.getColor(R.styleable.EmotionalFaceView_eyesColor, DEFAULT_EYES_COLOR)
+        mouthColor = typedArray.getColor(R.styleable.EmotionalFaceView_mouthColor, DEFAULT_MOUTH_COLOR)
+        borderColor = typedArray.getColor(R.styleable.EmotionalFaceView_borderColor,
+                DEFAULT_BORDER_COLOR)
+        borderWidth = typedArray.getDimension(R.styleable.EmotionalFaceView_borderWidth,
+                DEFAULT_BORDER_WIDTH)
+
+        //8: Recycle the typedArray to make the data associated with it ready for garbage collection.
+        // TypedArray objects are shared and must be recycled.
+        typedArray.recycle()
     }
 
 
