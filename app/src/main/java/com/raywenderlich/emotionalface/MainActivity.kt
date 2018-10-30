@@ -31,7 +31,9 @@
 package com.raywenderlich.emotionalface
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v7.app.AppCompatActivity
+import com.raywenderlich.emotionalface.EmotionalFaceView.Companion.HAPPY
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

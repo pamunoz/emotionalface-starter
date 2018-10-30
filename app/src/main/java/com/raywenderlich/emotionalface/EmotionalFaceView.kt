@@ -2,6 +2,8 @@ package com.raywenderlich.emotionalface
 
 import android.content.Context
 import android.graphics.*
+import android.os.Bundle
+import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.View
 
@@ -156,4 +158,27 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
         // TypedArray objects are shared and must be recycled.
         typedArray.recycle()
     }
+
+    override fun onSaveInstanceState(): Parcelable {
+        // 1
+        val bundle = Bundle()
+        // 2
+        bundle.putLong("happinessState", happinessState)
+        // 3
+        bundle.putParcelable("superState", super.onSaveInstanceState())
+        return bundle
+    }
+
+    override fun onRestoreInstanceState(state: Parcelable) {
+        // 4
+        var viewState = state
+        if (viewState is Bundle) {
+            // 5
+            happinessState = viewState.getLong("happinessState", HAPPY)
+            // 6
+            viewState = viewState.getParcelable("superState")
+        }
+        super.onRestoreInstanceState(viewState)
+    }
+
 }
