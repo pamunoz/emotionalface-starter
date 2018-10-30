@@ -36,8 +36,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-  }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // 1: Set the emotionalFaceView‘s happinessState to HAPPY when the user clicks on the happy button.
+        happyButton.setOnClickListener {
+            emotionalFaceView.happinessState = EmotionalFaceView.HAPPY
+        }
+        // 2: Set the emotionalFaceView‘s happinessState to SAD when the user clicks on the sad button.
+        sadButton.setOnClickListener {
+            emotionalFaceView.happinessState = EmotionalFaceView.SAD
+        }
+    }
 }
