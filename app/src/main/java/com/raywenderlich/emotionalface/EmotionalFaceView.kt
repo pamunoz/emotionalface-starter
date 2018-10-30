@@ -112,35 +112,29 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
     }
 
     private fun drawMouth(canvas: Canvas) {
-        // This will reset the path and remove any old path before drawing a new path,
-        // to avoid drawing the mouth more than one time while Android calls
-        // the onDraw() method again and again.
+
+        // Clear
         mouthPath.reset()
-        // 1 Set the starting point of the path to (x0,y0) by using the moveTo() method where:
-        //
-        //    x0 is equal to 22% of the size.
-        //    y0 is equal to 70% of the size.
+
         mouthPath.moveTo(size * 0.22f, size * 0.7f)
-        // 2 Draw a curved path from the starting point and through (x1,y1) that ends with (x2,y2) where:
-        //
-        //    x1 is equal to 50% of the size.
-        //    y1 is equal to 80% of the size.
-        //    x2 is equal to 78% of the size.
-        //    y2 is equal to 70% of the size.
-        mouthPath.quadTo(size * 0.50f, size * 0.80f, size * 0.78f, size * 0.70f)
-        // 3 Draw a curved path starting from the last end point (x2,y2) and through (x3,y3) and that ends with (x0,y0) where:
-        //
-        //    x3 is equal to 50% of the size.
-        //    y3 is equal to 90% of the size.
-        //    x0 is equal to 22% of the size.
-        //    y0 is equal to 70% of the size.
-        mouthPath.quadTo(size * 0.50f, size * 0.90f, size * 0.22f, size * 0.70f)
-        // 4 Set the paint color to the mouthColor and make it filling the drawing area.
+
+        if (happinessState == HAPPY) {
+            // Happy mouth path
+            mouthPath.quadTo(size * 0.5f, size * 0.80f, size * 0.78f, size * 0.7f)
+            mouthPath.quadTo(size * 0.5f, size * 0.90f, size * 0.22f, size * 0.7f)
+        } else {
+            // Sad mouth path
+            mouthPath.quadTo(size * 0.5f, size * 0.50f, size * 0.78f, size * 0.7f)
+            mouthPath.quadTo(size * 0.5f, size * 0.60f, size * 0.22f, size * 0.7f)
+        }
+
         paint.color = mouthColor
         paint.style = Paint.Style.FILL
-        // 5 Draw the path to the canvas.
+
+        // Draw mouth path
         canvas.drawPath(mouthPath, paint)
     }
+
 
     private fun setupAttributes(attrs: AttributeSet?) {
         // 6: Obtain a typed array of the XML attributes
